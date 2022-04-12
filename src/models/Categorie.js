@@ -3,7 +3,6 @@ const Categorie = (sequelize, DataTypes) => {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: DataTypes.STRING,
   }, {
-    underscored: true,
     timestamps: false,
     tableName: 'Categories',
   });

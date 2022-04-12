@@ -6,7 +6,6 @@ const User = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     image: DataTypes.STRING,
   }, {
-    underscored: true,
     timestamps: false,
     tableName: 'Users',
   });

@@ -5,7 +5,6 @@ const BlogPost = (sequelize, DataTypes) => {
     content: DataTypes.TEXT,
     userId: { type: DataTypes.INTEGER, foreignKey: true },
   }, {
-    underscored: true,
     timestamps: false,
     tableName: 'BlogPosts',
   });

@@ -1,6 +1,6 @@
 const PostCategorie = (sequelize, _DataTypes) => {
   const postCategorieModel = sequelize.define('PostCategorie', {}, {
-    timestamps: false, underscored: true, tableName: 'PostsCategories', 
+    timestamps: false, tableName: 'PostsCategories', 
   });
 
   postCategorieModel.associate = (models) => {
