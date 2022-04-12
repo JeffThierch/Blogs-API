@@ -1,13 +1,28 @@
-const { validateIfFieldExist, validateFieldMinLength, validateFieldLength } = require('./helpers');
+const { 
+  validateIfFieldExist, 
+  validateFieldMinLength, 
+  validateFieldLength, 
+  errorNames, 
+} = require('./helpers');
+
+const {
+  UNDEFINED_DISPLAY_NAME,
+  UNDEFINED_EMAIL,
+  INVALID_EMAIL,
+  SHORT_DISPLAY_NAME,
+  UNDEFINED_PASSWORD,
+  WRONG_PASSWORD_LENGTH,
+  
+} = errorNames;
 
 const validateIfCreateUserFieldExist = ({ displayName, email, password }) => {
   switch (true) {
     case !validateIfFieldExist(displayName):
-      throw new Error('UNDEFINED_DISPLAY_NAME');
+      throw new Error(UNDEFINED_DISPLAY_NAME);
     case !validateIfFieldExist(email):
-      throw new Error('UNDEFINED_EMAIL');
+      throw new Error(UNDEFINED_EMAIL);
     case !validateIfFieldExist(password):
-      throw new Error('UNDEFINED_PASSWORD');
+      throw new Error(UNDEFINED_PASSWORD);
     default:
       return true;
   }
@@ -16,9 +31,9 @@ const validateIfCreateUserFieldExist = ({ displayName, email, password }) => {
 const validateCreateUserFieldsLenght = ({ displayName, password }) => {
   switch (true) {
     case !validateFieldMinLength(displayName, 8):
-      throw new Error('SHORT_DISPLAY_NAME');
+      throw new Error(SHORT_DISPLAY_NAME);
     case !validateFieldLength(password, 6):
-      throw new Error('WRONG_PASSWORD_LENGTH');
+      throw new Error(WRONG_PASSWORD_LENGTH);
     default:
       return true;
   }
@@ -30,7 +45,7 @@ const validadateUserEmail = (email) => {
   const isEmailValid = emailRegex.test(email);
 
   if (!isEmailValid) {
-    throw new Error('INVALID_EMAIL');
+    throw new Error(INVALID_EMAIL);
   }
 
   return true;

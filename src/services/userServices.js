@@ -1,19 +1,20 @@
 const jwt = require('jsonwebtoken');
 const userValidations = require('./validations/userValidations');
 const { User } = require('../models');
+const { errorNames: { USER_ALREADY_EXIST } } = require('./validations/helpers');
 
 const jwtSecret = process.env.JWT_SECRET;
 
-const create = ({ displayName, email, password, image }) => {
+const create = async ({ displayName, email, password, image }) => {
   userValidations.validateCreateUserFields({ displayName, email, password });
 
-  const userExist = User.findOne({ where: { email } });
+  const userExist = await User.findOne({ where: { email } });
 
   if (userExist) {
-    throw new Error('USER_ALREADY_EXIST');
+    throw new Error(USER_ALREADY_EXIST);
   }
 
-  const { id, email: userEmail } = User.create({ displayName, email, password, image });
+  const { id, email: userEmail } = await User.create({ displayName, email, password, image });
 
   const jwtConfig = {
     expiresIn: '1d',

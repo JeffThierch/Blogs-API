@@ -7,7 +7,7 @@ const errorsObj = {
     code: 400, 
     message: '"displayName" length must be at least 8 characters long', 
   },
-  WRONG_PASSWORD_LENGTH: { code: 400, message: '"password" llength must be 6 characters long' },
+  WRONG_PASSWORD_LENGTH: { code: 400, message: '"password" length must be 6 characters long' },
   INVALID_EMAIL: { code: 400, message: '"email" must be a valid email' },
 };
 
