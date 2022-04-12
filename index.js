@@ -14,3 +14,7 @@ app.get('/', (request, response) => {
 const userRoutes = require('./src/routes/userRoutes');
 
 app.use('/user', userRoutes);
+
+const errorController = require('./src/controllers/errorController');
+
+app.use(errorController);
