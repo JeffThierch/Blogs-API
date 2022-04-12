@@ -5,3 +5,5 @@ const router = express.Router();
 
 router
   .post('/', userController.create);
+
+module.exports = router;
