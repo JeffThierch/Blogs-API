@@ -5,9 +5,9 @@ const errorsObj = {
   UNDEFINED_PASSWORD: { code: 400, message: '"password" is required' },
   SHORT_DISPLAY_NAME: { 
     code: 400, 
-    message: '"displayName" length must be at least 8 charecteres long', 
+    message: '"displayName" length must be at least 8 characters long', 
   },
-  SHORT_PASSWORD: { code: 400, message: '"password" length must be at least 6 charecteres long' },
+  WRONG_PASSWORD_LENGTH: { code: 400, message: '"password" llength must be 6 characters long' },
   INVALID_EMAIL: { code: 400, message: '"email" must be a valid email' },
 };
 

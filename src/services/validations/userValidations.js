@@ -1,4 +1,4 @@
-const { validateIfFieldExist, validateFieldMinLength } = require('./helpers');
+const { validateIfFieldExist, validateFieldMinLength, validateFieldLength } = require('./helpers');
 
 const validateIfCreateUserFieldExist = ({ displayName, email, password }) => {
   switch (true) {
@@ -17,8 +17,8 @@ const validateCreateUserFieldsLenght = ({ displayName, password }) => {
   switch (true) {
     case !validateFieldMinLength(displayName, 8):
       throw new Error('SHORT_DISPLAY_NAME');
-    case !validateFieldMinLength(password, 6):
-      throw new Error('SHORT_PASSWORD');
+    case !validateFieldLength(password, 6):
+      throw new Error('WRONG_PASSWORD_LENGTH');
     default:
       return true;
   }
