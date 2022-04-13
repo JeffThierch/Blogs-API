@@ -15,6 +15,10 @@ const userRoutes = require('./src/routes/userRoutes');
 
 app.use('/user', userRoutes);
 
+const loginRoutes = require('./src/routes/loginRoutes');
+
+app.use('/login', loginRoutes);
+
 const errorController = require('./src/controllers/errorController');
 
 app.use(errorController);

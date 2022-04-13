@@ -9,6 +9,9 @@ const errorsObj = {
   },
   WRONG_PASSWORD_LENGTH: { code: 400, message: '"password" length must be 6 characters long' },
   INVALID_EMAIL: { code: 400, message: '"email" must be a valid email' },
+  INVALID_FIELDS: { code: 400, message: 'Invalid fields' },
+  EMPTY_PASSWORD: { code: 400, message: '"password" is not allowed to be empty' },
+  EMPTY_EMAIL: { code: 400, message: '"email" is not allowed to be empty' },
 };
 
 module.exports = {

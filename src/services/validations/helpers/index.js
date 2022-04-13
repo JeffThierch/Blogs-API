@@ -1,5 +1,6 @@
 const validateIfFieldExist = (field) => field !== undefined; 
 const validateFieldMinLength = (field, minLength) => field.trim().length >= minLength;
+const validateIfFieldAreNotEmpty = (field) => field.trim().length !== 0;
 const validateFieldLength = (field, fieldLength) => field.trim().length === fieldLength;
 
 const errorNames = {
@@ -10,11 +11,15 @@ const errorNames = {
   UNDEFINED_DISPLAY_NAME: 'UNDEFINED_DISPLAY_NAME',
   UNDEFINED_EMAIL: 'UNDEFINED_EMAIL',
   UNDEFINED_PASSWORD: 'UNDEFINED_PASSWORD',
+  INVALID_FIELDS: 'INVALID_FIELDS',
+  EMPTY_EMAIL: 'EMPTY_EMAIL',
+  EMPTY_PASSWORD: 'EMPTY_PASSWORD',
 };
 
 module.exports = {
   validateIfFieldExist,
   validateFieldMinLength,
   validateFieldLength,
+  validateIfFieldAreNotEmpty,
   errorNames,
 };
