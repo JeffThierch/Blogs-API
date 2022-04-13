@@ -15,6 +15,7 @@ const errorsObj = {
   UNDEFINED_TOKEN: { code: 401, message: 'Token not found' },
   'jwt malformed': { code: 401, message: 'Expired or invalid token' },
   'invalid token': { code: 401, message: 'Expired or invalid token' },
+  'jwt expired': { code: 401, message: 'Expired or invalid token' },
 };
 
 module.exports = {
