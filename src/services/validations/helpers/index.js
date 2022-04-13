@@ -5,6 +5,7 @@ const validateFieldLength = (field, fieldLength) => field.trim().length === fiel
 
 const errorNames = {
   USER_ALREADY_EXIST: 'USER_ALREADY_EXIST',
+  USER_NOT_EXIST: 'USER_NOT_EXIST',
   SHORT_DISPLAY_NAME: 'SHORT_DISPLAY_NAME',
   WRONG_PASSWORD_LENGTH: 'WRONG_PASSWORD_LENGTH',
   INVALID_EMAIL: 'INVALID_EMAIL',

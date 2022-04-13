@@ -1,7 +1,7 @@
 const userValidations = require('./validations/userValidations');
 const { User } = require('../models');
 const { generateUserToken } = require('./helpers');
-const { errorNames: { USER_ALREADY_EXIST } } = require('./validations/helpers');
+const { errorNames: { USER_ALREADY_EXIST, USER_NOT_EXIST } } = require('./validations/helpers');
 
 const getAll = async () => {
   const allUsers = await User.findAll({
@@ -9,6 +9,16 @@ const getAll = async () => {
   });
 
   return allUsers;
+};
+
+const getById = async ({ id }) => {
+  const user = await User.findOne({ where: { id }, attributes: { exclude: ['password'] } });
+
+  if (!user) {
+    throw new Error(USER_NOT_EXIST);
+  }
+
+  return user;
 };
 
 const create = async ({ displayName, email, password, image }) => {
@@ -30,4 +40,5 @@ const create = async ({ displayName, email, password, image }) => {
 module.exports = {
   create,
   getAll,
+  getById,
 };
