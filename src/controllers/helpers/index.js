@@ -14,6 +14,7 @@ const errorsObj = {
   EMPTY_EMAIL: { code: 400, message: '"email" is not allowed to be empty' },
   UNDEFINED_TOKEN: { code: 401, message: 'Token not found' },
   USER_NOT_EXIST: { code: 404, message: 'User does not exist' },
+  UNDEFINED_NAME: { code: 400, message: '"name" is required' },
   'jwt malformed': { code: 401, message: 'Expired or invalid token' },
   'invalid token': { code: 401, message: 'Expired or invalid token' },
   'jwt expired': { code: 401, message: 'Expired or invalid token' },

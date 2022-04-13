@@ -19,6 +19,10 @@ const loginRoutes = require('./src/routes/loginRoutes');
 
 app.use('/login', loginRoutes);
 
+const categorieRoutes = require('./src/routes/categorieRoutes');
+
+app.use('/categories', categorieRoutes);
+
 const errorController = require('./src/controllers/errorController');
 
 app.use(errorController);
