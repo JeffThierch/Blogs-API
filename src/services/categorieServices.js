@@ -1,6 +1,12 @@
 const { Categorie } = require('../models');
 const categorieValidation = require('./validations/categorieValidations');
 
+const getAll = async () => {
+  const categories = await Categorie.findAll();
+
+  return categories;
+};
+
 const create = async ({ name }) => {
   categorieValidation.validateCreateCategorieFields({ name });
 
@@ -13,4 +19,5 @@ const create = async ({ name }) => {
 
 module.exports = {
   create,
+  getAll,
 };
