@@ -12,7 +12,6 @@ const {
   SHORT_DISPLAY_NAME,
   UNDEFINED_PASSWORD,
   WRONG_PASSWORD_LENGTH,
-  
 } = errorNames;
 
 const validateIfCreateUserFieldExist = ({ displayName, email, password }) => {

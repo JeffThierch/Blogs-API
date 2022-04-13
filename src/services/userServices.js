@@ -1,9 +1,7 @@
-const jwt = require('jsonwebtoken');
 const userValidations = require('./validations/userValidations');
 const { User } = require('../models');
+const { generateUserToken } = require('./helpers');
 const { errorNames: { USER_ALREADY_EXIST } } = require('./validations/helpers');
-
-const jwtSecret = process.env.JWT_SECRET;
 
 const create = async ({ displayName, email, password, image }) => {
   userValidations.validateCreateUserFields({ displayName, email, password });
@@ -16,12 +14,7 @@ const create = async ({ displayName, email, password, image }) => {
 
   const { id, email: userEmail } = await User.create({ displayName, email, password, image });
 
-  const jwtConfig = {
-    expiresIn: '1d',
-    algorithm: 'HS256',
-  };
-
-  const token = jwt.sign({ data: { id, email: userEmail } }, jwtSecret, jwtConfig);
+  const token = generateUserToken({ id, email: userEmail });
 
   return token;
 };
