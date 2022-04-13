@@ -12,6 +12,8 @@ const errorsObj = {
   INVALID_FIELDS: { code: 400, message: 'Invalid fields' },
   EMPTY_PASSWORD: { code: 400, message: '"password" is not allowed to be empty' },
   EMPTY_EMAIL: { code: 400, message: '"email" is not allowed to be empty' },
+  UNDEFINED_TOKEN: { code: 401, message: 'Token not found' },
+  'jwt malformed': { code: 401, message: 'Expired or invalid token' },
 };
 
 module.exports = {

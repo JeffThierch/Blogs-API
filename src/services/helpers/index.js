@@ -13,6 +13,12 @@ const generateUserToken = ({ id, email }) => {
   return token;
 };
 
+const validateToken = ({ token }) => {
+  const tokenDecored = jwt.verify(token, jwtSecret);
+  return tokenDecored;
+};
+
 module.exports = {
   generateUserToken,
+  validateToken,
 };

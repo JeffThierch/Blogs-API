@@ -7,6 +7,7 @@ const getAll = async (_req, res, next) => {
     return res.status(200).json(allUsers);
   } catch (error) {
     console.error(error.message);
+    
     return next(error.message);
   }
 };
