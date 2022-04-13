@@ -6,7 +6,7 @@ const loginRequest = async (req, res, next) => {
 
     const token = await loginServices.loginRequest({ email, password });
 
-    res.status(201).json({ token });
+    res.status(200).json({ token });
   } catch (error) {
     return next(error.message);
   }
