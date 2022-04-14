@@ -20,6 +20,8 @@ const errorsObj = {
   UNDEFINED_CONTENT: { code: 400, message: '"content" is required' },
   UNDEFINED_CATEGORY_ID: { code: 400, message: '"categoryIds" is required' },
   CATEGORY_DONT_EXIST: { code: 400, message: '"categoryIds" not found' },
+  UNAUTHORIZED_USER: { code: 401, message: 'Unauthorized user' },
+  CATEGORY_CANT_BE_EDITED: { code: 400, message: 'Categories cannot be edited' },
   'jwt malformed': { code: 401, message: 'Expired or invalid token' },
   'invalid token': { code: 401, message: 'Expired or invalid token' },
   'jwt expired': { code: 401, message: 'Expired or invalid token' },

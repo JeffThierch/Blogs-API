@@ -36,6 +36,23 @@ const create = async (req, res, next) => {
     return res.status(201).json(newPost);
   } catch (error) {
     console.error(error.message);
+
+    return next(error.message);
+  }
+};
+
+const edit = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { title, content, categoryIds } = req.body;
+    const { id: userId } = req.user;
+
+    const newPost = await postServices.edit({ id, title, content, categoryIds, userId });
+
+    return res.status(200).json(newPost);
+  } catch (error) {
+    console.error(error.message);
+
     return next(error.message);
   }
 };
@@ -44,4 +61,5 @@ module.exports = {
   getAll,
   create,
   getById,
+  edit,
 };
