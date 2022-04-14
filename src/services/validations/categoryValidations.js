@@ -8,7 +8,7 @@ const {
   UNDEFINED_NAME,
 } = errorNames;
 
-const validateCreateCategorieFields = ({ name }) => {
+const validateCreateCategoryFields = ({ name }) => {
   switch (true) {
     case !validateIfFieldExist(name):
       throw new Error(UNDEFINED_NAME);
@@ -20,5 +20,5 @@ const validateCreateCategorieFields = ({ name }) => {
 };
 
 module.exports = {
-  validateCreateCategorieFields,
+  validateCreateCategoryFields,
 };

@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const postValidation = require('./validations/postValidations');
-const categorieServices = require('./categorieServices');
-const { BlogPost, User, Categorie } = require('../models');
+const categorieServices = require('./categoryServices');
+const { BlogPost, User, Category } = require('../models');
 const { errorNames: { POST_NOT_EXIST, UNAUTHORIZED_USER } } = require('./validations/helpers');
 
 const getAll = async () => {
@@ -13,7 +13,7 @@ const getAll = async () => {
         attributes: { exclude: ['password'] },
       },
       { 
-        model: Categorie,
+        model: Category,
         as: 'categories',
         through: { attributes: [] },
       },
@@ -28,7 +28,7 @@ const getById = async ({ id }) => {
     where: { id },
     include: [
       { model: User, as: 'user', attributes: { exclude: ['password'] } },
-      { model: Categorie, as: 'categories', through: { attributes: [] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
 
@@ -58,7 +58,7 @@ const edit = async ({ id, title, content, categoryIds, userId }) => {
     where: { id }, 
     include: [
       { model: User, as: 'user' },
-      { model: Categorie, as: 'categories', through: { attributes: [] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
 
@@ -101,7 +101,7 @@ const search = async ({ query }) => {
     }, 
     include: [
       { model: User, as: 'user' },
-      { model: Categorie, as: 'categories', through: { attributes: [] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
 
