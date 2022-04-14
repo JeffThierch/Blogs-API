@@ -1,6 +1,7 @@
 const postValidation = require('./validations/postValidations');
 const categorieServices = require('./categorieServices');
-const { BlogPost, User, Categorie, PostCategorie } = require('../models');
+const { BlogPost, User, Categorie } = require('../models');
+const { errorNames: { POST_NOT_EXIST } } = require('./validations/helpers');
 
 const getAll = async () => {
   const AllPost = await BlogPost.findAll({
@@ -21,6 +22,22 @@ const getAll = async () => {
   return AllPost;
 };
 
+const getById = async ({ id }) => {
+  const post = await BlogPost.findOne({
+    where: { id },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Categorie, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+
+  if (!post) {
+    throw new Error(POST_NOT_EXIST);
+  }
+
+  return post;
+};
+
 const create = async ({ title, content, categoryIds, userId }) => {
   postValidation.validateCreatePostFields({ title, content, categoryIds });
 
@@ -38,4 +55,5 @@ const create = async ({ title, content, categoryIds, userId }) => {
 module.exports = {
   getAll,
   create,
+  getById,
 };

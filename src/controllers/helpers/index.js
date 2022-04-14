@@ -14,6 +14,7 @@ const errorsObj = {
   EMPTY_EMAIL: { code: 400, message: '"email" is not allowed to be empty' },
   UNDEFINED_TOKEN: { code: 401, message: 'Token not found' },
   USER_NOT_EXIST: { code: 404, message: 'User does not exist' },
+  POST_NOT_EXIST: { code: 404, message: 'Post does not exist' },
   UNDEFINED_NAME: { code: 400, message: '"name" is required' },
   UNDEFINED_TITLE: { code: 400, message: '"title" is required' },
   UNDEFINED_CONTENT: { code: 400, message: '"content" is required' },

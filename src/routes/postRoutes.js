@@ -6,6 +6,7 @@ const router = express.Router();
 
 router
   .get('/', authJwt, postControllers.getAll)
-  .post('/', authJwt, postControllers.create);
+  .post('/', authJwt, postControllers.create)
+  .get('/:id', authJwt, postControllers.getById);
 
 module.exports = router;
