@@ -23,6 +23,10 @@ const categorieRoutes = require('./src/routes/categorieRoutes');
 
 app.use('/categories', categorieRoutes);
 
+const postRoutes = require('./src/routes/postRoutes');
+
+app.use('/post', postRoutes);
+
 const errorController = require('./src/controllers/errorController');
 
 app.use(errorController);

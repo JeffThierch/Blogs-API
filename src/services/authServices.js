@@ -4,7 +4,9 @@ const { validateToken } = require('./helpers');
 const validateJwt = ({ token }) => {
   tokenValidation.validateJwtToken({ token });
 
-  validateToken({ token });
+  const { data } = validateToken({ token });
+
+  return data;
 };
 
 module.exports = {

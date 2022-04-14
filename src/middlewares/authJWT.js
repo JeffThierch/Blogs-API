@@ -4,7 +4,11 @@ const authJwt = (req, _res, next) => {
   try {
     const token = req.headers.authorization;
 
-    authServices.validateJwt({ token });
+    const { id } = authServices.validateJwt({ token });
+
+    req.user = {
+      id,
+    };
 
     next();
   } catch (error) {
