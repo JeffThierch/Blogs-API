@@ -53,7 +53,7 @@ const create = async ({ title, content, categoryIds, userId }) => {
 };
 
 const edit = async ({ id, title, content, categoryIds, userId }) => {
-  const { user, categories, id: postId } = await BlogPost.findOne({ 
+  const post = await BlogPost.findOne({ 
     where: { id }, 
     include: [
       { model: User, as: 'user' },
@@ -61,9 +61,9 @@ const edit = async ({ id, title, content, categoryIds, userId }) => {
     ],
   });
 
-  if (user.id !== userId) throw new Error(UNAUTHORIZED_USER);
+  if (post.user.id !== userId) throw new Error(UNAUTHORIZED_USER);
 
-  if (!postId) throw new Error(POST_NOT_EXIST);
+  if (!post) throw new Error(POST_NOT_EXIST);
 
   postValidation.validateEditPostFields({ title, content, categoryIds });
 
@@ -73,8 +73,21 @@ const edit = async ({ id, title, content, categoryIds, userId }) => {
     title,
     content,
     userId,
-    categories,
+    categories: post.categories,
   };
+};
+
+const deletePost = async ({ id, userId }) => {
+  const post = await BlogPost.findOne({ 
+    where: { id }, 
+    include: [{ model: User, as: 'user' }],
+  });
+  
+  if (!post) throw new Error(POST_NOT_EXIST);
+
+  if (post.user.id !== userId) throw new Error(UNAUTHORIZED_USER);
+
+  await BlogPost.destroy({ where: { id } });
 };
 
 module.exports = {
@@ -82,4 +95,5 @@ module.exports = {
   create,
   getById,
   edit,
+  deletePost,
 };
